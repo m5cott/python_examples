@@ -44,32 +44,43 @@ def play():
     # user's choice
     print("Your choices are:\n")
     user_choice = int(input("\t1 = rock\n\t2 = paper\n\t3 = scissors\n"))
-    if user_choice == 1:
+    user_choice-=1
+    if user_choice == 0:
         print("You chose Rock")
         print("The computer chose " + game_options[computer_choice])
-    elif user_choice == 2:
+        logic(user_choice, computer_choice)
+    elif user_choice == 1:
         print("You chose Paper")
         print("The computer chose " + game_options[computer_choice])
-    elif user_choice == 3:
+        logic(user_choice, computer_choice)
+    elif user_choice == 2:
         print("You chose Scissor")
         print("The computer chose " + game_options[computer_choice])
+        logic(user_choice, computer_choice)
     else:
         print("Opps... Invalid input... Please try again...")
         play()
 
-'''
-def logic(user_logic):
-    for item in game_options:
-        if item == user_logic:
-            print("It's a tie")
-            play()
+def logic(user_logic, game_logic):
+    if user_logic == game_logic:
+        print("It's a tie. The computer chose " + game_options[game_logic] + " and you chose " + game_options[user_logic])
+    
+    if user_logic == 0: # Rock
+        if game_logic - 2 != 0:
+            print("You lose! " + game_options[game_logic] + " beats " + game_options[user_logic])
         else:
-            if item == "rock":
-                print("You win!")
-            elif item == "paper":
-                print("You lose!")
-'''
-
+            print("You win! " + game_options[user_logic] + " beats " + game_options[game_logic])    
+    elif user_logic == 1: # Paper
+        if user_logic < game_logic:
+            print("You lose! " + game_options[game_logic] + " beats " + game_options[user_logic])
+        else:
+            print("You win! " + game_options[user_logic] + " beats " + game_options[game_logic])
+    elif user_logic == 2: # Scissors
+        if user_logic - 1 == game_logic:
+            print("You win! " + game_options[user_logic] + " beats " + game_options[game_logic])
+        else:
+            print("You lose! " + game_options[game_logic] + " beats " + game_options[user_logic])
+        
 
 def rules():
     print("Testing out funciton.")
