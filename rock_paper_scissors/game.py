@@ -2,6 +2,7 @@
     Rock Paper Scissors
     Creator: Michael Scott
 '''
+import sys
 from random import randrange
 
 game_options = ["rock", "paper", "scissors"]
@@ -32,9 +33,9 @@ def start(user_input):
             rules()
         else:
             quit_game()
-    #else:
-    #    print("Your input was " + str(begin) + ". You'll have to try again.")
-    #    welcome()
+    else:
+        print("Your input was " + user_input + ". You'll have to try again.")
+        welcome()
     # print(choices(game_options))
 
 def play():
@@ -87,7 +88,7 @@ def rules():
 
 
 def quit_game():
-    print("Testing out funciton.")
+    quit()
 
 
 welcome()
